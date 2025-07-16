@@ -35,10 +35,12 @@ def train_yolo(model_path, data_path, epochs, imgsz, batch, device):
     print("✅ Training complete!")
 """
 
+
 def train_yolo_light_aug(model_path, data_path, epochs, imgsz, batch, device):
     import os
     import torch
-    os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
+
+    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
     torch.cuda.empty_cache()
     print("🚀 Starting YOLOv8 training...")
     model = YOLO(model_path)
@@ -50,19 +52,19 @@ def train_yolo_light_aug(model_path, data_path, epochs, imgsz, batch, device):
         batch=batch,
         device=device,
         workers=2,  # Reduce if still OOM
-        project='runs/train',
-        name='exp_xview',
+        project="runs/train",
+        name="exp_xview",
         verbose=True,
-        #learning rate
+        # learning rate
         lr0=1e-2,
         lrf=1e-5,
         cos_lr=True,
-        #class loss
-        #cls=0.7,
+        # class loss
+        # cls=0.7,
         patience=10,
         # Lighter augmentations
-        degrees = 10.0,
-        scale = 0.2,
+        degrees=10.0,
+        scale=0.2,
         flipud=0.5,
         fliplr=0.5,
         hsv_v=0.4,
@@ -71,6 +73,49 @@ def train_yolo_light_aug(model_path, data_path, epochs, imgsz, batch, device):
     )
 
     print("✅ Training complete!")
+
+
+def train_yolo_2(model_path, data_path, epochs, imgsz, batch, device):
+    import os
+    import torch
+
+    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+    torch.cuda.empty_cache()
+    print("🚀 Starting YOLOv8 training...")
+    model = YOLO(model_path)
+
+    model.train(
+        data=data_path,
+        epochs=epochs,
+        imgsz=imgsz,
+        batch=batch,
+        device=device,
+        workers=2,  # Reduce if still OOM
+        project="runs/train",
+        name="exp_xview",
+        verbose=True,
+        # learning rate
+        lr0=1e-2,
+        lrf=1e-5,
+        cos_lr=True,
+        # loss
+        cls=0.3,
+        box=0.2,
+        dfl=1.5,
+        patience=10,
+        # Lighter augmentations
+        degrees=5.0,
+        scale=0.1,
+        flipud=0.3,
+        fliplr=0.5,
+        hsv_v=0.4,
+        hsv_h=0.015,
+        mosaic=0.2,
+        mixup=0.05,
+        translate=0.05,
+    )
+    print("✅ Training complete!")
+
 
 if __name__ == "__main__":
     """
@@ -85,6 +130,7 @@ if __name__ == "__main__":
 
     train_yolo(args.model, args.data, args.epochs, args.imgsz, args.batch, args.device)
     """
+    """
     model_path = "yolov8m.pt"
     data_path = f"/part/data_fat32/xView_yolo_tiles/data.yaml"
     epochs = 25 
@@ -92,3 +138,11 @@ if __name__ == "__main__":
     batch = 3
     device = '0'
     train_yolo_light_aug(model_path , data_path , epochs ,imgsz , batch , device)
+    """
+    model_path = "yolov8s.pt"
+    data_path = f"/part/data_fat32/xView_yolo_tiles/data.yaml"
+    epochs = 100
+    imgsz = 768
+    batch = 3
+    device = "0"
+    train_yolo_2(model_path, data_path, epochs, imgsz, batch, device)
