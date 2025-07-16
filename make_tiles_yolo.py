@@ -8,11 +8,11 @@ tile_size = 1024
 overlap = 200
 max_boxes = 1000
 
-input_base_img = f"/part/data_fat32/xViewDataset_objectDetection_yolo/images"
-input_base_lbl = f"/part/data_fat32/xViewDataset_objectDetection_yolo/labels"
+input_base_img = f"part/to/xViewDataset_objectDetection_yolo/images"
+input_base_lbl = f"/path/to/xViewDataset_objectDetection_yolo/labels"
 
-output_base_img = "/part/data_fat32/xView_yolo_tiles/images"
-output_base_lbl = "/part/data_fat32/xView_yolo_tiles/labels"
+output_base_img = "/path/to/xView_yolo_tiles/images"
+output_base_lbl = "/path/to/xView_yolo_tiles/labels"
 
 splits = ['train', 'val']
 
