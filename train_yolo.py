@@ -132,15 +132,15 @@ if __name__ == "__main__":
     """
     """
     model_path = "yolov8m.pt"
-    data_path = f"/part/data_fat32/xView_yolo_tiles/data.yaml"
+    data_path = /path/to/data/yaml
     epochs = 25 
     imgsz = 640
     batch = 3
     device = '0'
     train_yolo_light_aug(model_path , data_path , epochs ,imgsz , batch , device)
     """
-    model_path = "yolov8s.pt"
-    data_path = f"/part/data_fat32/xView_yolo_tiles/data.yaml"
+    model_path = "yolov8s.pt" # can use yolov8m , yolov8l
+    data_path = path/to/data.yaml 
     epochs = 100
     imgsz = 768
     batch = 3
