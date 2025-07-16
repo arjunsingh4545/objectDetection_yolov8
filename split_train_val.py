@@ -54,7 +54,9 @@ if __name__ == "__main__":
 
     split_dataset(args.img_dir, args.label_dir, args.output_dir, args.val_ratio)
     """
-    image_dir= "/part/data_fat32/xViewDataset_tar/train/train_images"
-    label_dir = "/part/data_fat32/xViewDataset_tar/labels/yolo_format_labels_copy"
-    output_dir= "/part/data_fat32/xViewDataset_objectDetection_yolo"
+
+    #xview dataset_tar ; tar files which are downloaded from xview website
+    image_dir= "path/to/xViewDataset_tar/train/train_images
+    label_dir = "path/to/xViewDataset_tar/labels/yolo_format_labels" # first change geojson to yolo format
+    output_dir= None
     split_dataset(image_dir , label_dir , output_dir)
