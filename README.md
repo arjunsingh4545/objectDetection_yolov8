@@ -48,5 +48,5 @@ Performs inference on test images using the trained model.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/arjunsingh4545/objectDetection_yolov8.git
+cd objectDetection_yolov8
