@@ -150,7 +150,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     main(args.geojson, args.img_dir, args.output_dir)
     """
-    geojson_path = "/part/data_fat32/xViewDataset_tar/labels/xView_train.geojson"
-    img_dir = "/part/data_fat32/xViewDataset_tar/train/train_images"
-    output_dir = "/part/data_fat32/xViewDataset_tar/labels/yolo_format"
+    geojson_path = None
+    img_dir = None
+    output_dir = None
     main(geojson_path , img_dir, output_dir)
